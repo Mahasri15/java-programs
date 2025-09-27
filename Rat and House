@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class RatsAndFood {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read inputs
+        int r = sc.nextInt();         // number of rats
+        int unit = sc.nextInt();      // food per rat
+        int n = sc.nextInt();         // number of houses
+
+        // If n is 0 treat array as null
+        if (n <= 0) {
+            System.out.println(-1);
+            sc.close();
+            return;
+        }
+
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (sc.hasNextInt()) arr[i] = sc.nextInt();
+            else arr[i] = 0;
+        }
+        sc.close();
+
+        // Null-check (as per problem statement)
+        if (arr == null) {
+            System.out.println(-1);
+            return;
+        }
+
+        long required = (long) r * unit; // use long to avoid overflow (r up to 1e5, unit up to 100)
+        long sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            if (sum >= required) {
+                // houses are 1-indexed in output
+                System.out.println(i + 1);
+                return;
+            }
+        }
+
+        // total food insufficient
+        System.out.println(0);
+    }
+}
