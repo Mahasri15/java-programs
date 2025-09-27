@@ -1,0 +1,11 @@
+int evenCount = 0, oddCount = 0;
+        
+        for (int p : position) {
+            if (p % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+        
+        return Math.min(evenCount, oddCount);
