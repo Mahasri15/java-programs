@@ -1,0 +1,4 @@
+String s = "Open AI Chat";
+        s = s.replace(" ", "");
+        int count = s.length();
+        System.out.println(count);
